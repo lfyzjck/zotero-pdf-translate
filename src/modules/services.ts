@@ -30,6 +30,9 @@ export class TranslationServices {
       this.deeplfree = new TranslateTaskRunner(e.deeplfree);
       this.deeplpro = new TranslateTaskRunner(e.deeplpro);
     });
+    import("./services/openai").then((e) => {
+      this.openaichatgpt = new TranslateTaskRunner(e.openai_chatgpt);
+    });
     import("./services/deeplcustom").then(
       (e) => (this.deeplcustom = new TranslateTaskRunner(e.default))
     );

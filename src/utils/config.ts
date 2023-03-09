@@ -122,6 +122,21 @@ export const SERVICES: Readonly<Readonly<TranslateService>[]> = <const>[
   },
   {
     type: "sentence",
+    id: "openaichatgpt",
+    defaultSecret: "#apiKey",
+    secretValidator(secret: string) {
+      const flag = secret?.length >= 36;
+      return {
+        secret,
+        status: flag,
+        info: flag
+          ? ""
+          : `The ApiKey is your OpenAI APIKey. The secret length must >= 36, but got ${secret?.length}.`,
+      };
+    },
+  },
+  {
+    type: "sentence",
     id: "deeplcustom",
     defaultSecret: "",
     secretValidator(secret: string) {
